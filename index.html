@@ -106,10 +106,120 @@
       }
 
       /* ─── SECTIONS ─── */
+      /* ─── PAGE AURA (animated background layer) ─── */
+      #pageAura {
+        position: fixed;
+        inset: 0;
+        z-index: 0;
+        pointer-events: none;
+        will-change: transform;
+        animation: sectionAura 20s ease-in-out infinite alternate;
+      }
+      #pageAura::before,
+      #pageAura::after {
+        content: "";
+        position: absolute;
+        border-radius: 50%;
+        filter: blur(80px);
+      }
+      #pageAura::before {
+        width: 70vw;
+        height: 70vw;
+        top: 5vh;
+        left: 50vw;
+        background: radial-gradient(
+          circle,
+          rgba(0, 229, 255, 0.28) 0%,
+          rgba(0, 229, 255, 0.08) 45%,
+          transparent 70%
+        );
+        animation: aura1 22s ease-in-out infinite alternate;
+      }
+      #pageAura::after {
+        width: 65vw;
+        height: 65vw;
+        bottom: 5vh;
+        left: -15vw;
+        background: radial-gradient(
+          circle,
+          rgba(124, 58, 237, 0.3) 0%,
+          rgba(124, 58, 237, 0.08) 45%,
+          transparent 70%
+        );
+        animation: aura2 28s ease-in-out infinite alternate;
+      }
+      .page-aura-green {
+        position: absolute;
+        width: 55vw;
+        height: 55vw;
+        border-radius: 50%;
+        top: 40vh;
+        left: 22vw;
+        background: radial-gradient(
+          circle,
+          rgba(16, 185, 129, 0.2) 0%,
+          rgba(16, 185, 129, 0.05) 45%,
+          transparent 70%
+        );
+        filter: blur(60px);
+        animation: aura3 25s ease-in-out infinite alternate;
+      }
+      @keyframes aura1 {
+        0% {
+          transform: translate(0, 0);
+        }
+        50% {
+          transform: translate(-8vw, 12vh);
+        }
+        100% {
+          transform: translate(5vw, -8vh);
+        }
+      }
+      @keyframes aura2 {
+        0% {
+          transform: translate(0, 0);
+        }
+        50% {
+          transform: translate(10vw, -10vh);
+        }
+        100% {
+          transform: translate(-5vw, 8vh);
+        }
+      }
+      @keyframes aura3 {
+        0% {
+          transform: translate(0, 0);
+        }
+        50% {
+          transform: translate(-6vw, 14vh);
+        }
+        100% {
+          transform: translate(8vw, -6vh);
+        }
+      }
+      @keyframes sectionAura {
+        0% {
+          opacity: 0.85;
+        }
+        100% {
+          opacity: 1;
+        }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        #pageAura,
+        #pageAura::before,
+        #pageAura::after,
+        .page-aura-green {
+          animation: none;
+        }
+      }
+
       section {
         padding: 120px 40px;
         max-width: 1200px;
         margin: 0 auto;
+        position: relative;
+        z-index: 1;
       }
       .section-tag {
         display: inline-block;
@@ -1460,12 +1570,151 @@
         color: var(--muted);
         line-height: 1.4;
       }
+
+      /* ─── HUMAN VS SYSTEM COMPARE ─── */
+      .compare-box {
+        max-width: 900px;
+        margin: 0 auto;
+        background: linear-gradient(
+          160deg,
+          rgba(255, 255, 255, 0.04),
+          rgba(124, 58, 237, 0.06)
+        );
+        border: 1px solid var(--border);
+        border-radius: 20px;
+        padding: 28px;
+      }
+      .compare-mode {
+        display: inline-flex;
+        padding: 4px;
+        border-radius: 999px;
+        border: 1px solid var(--border);
+        background: rgba(0, 0, 0, 0.22);
+        gap: 4px;
+        margin-bottom: 20px;
+      }
+      .cmp-mode-btn {
+        border: none;
+        background: transparent;
+        color: var(--muted);
+        padding: 8px 14px;
+        border-radius: 999px;
+        font-family: "Unbounded", sans-serif;
+        font-size: 10px;
+        letter-spacing: 0.04em;
+        cursor: pointer;
+        transition: all 0.18s;
+      }
+      .cmp-mode-btn.active {
+        color: #00141b;
+        background: var(--accent);
+      }
+      .compare-top {
+        display: grid;
+        grid-template-columns: 1fr auto;
+        gap: 14px;
+        align-items: center;
+        margin-bottom: 14px;
+      }
+      .compare-top-label {
+        color: var(--muted);
+        font-size: 13px;
+      }
+      .compare-level {
+        font-family: "Unbounded", sans-serif;
+        font-size: 11px;
+        color: var(--accent);
+        letter-spacing: 0.08em;
+      }
+      .compare-range {
+        width: 100%;
+        appearance: none;
+        height: 10px;
+        border-radius: 999px;
+        background: linear-gradient(
+          90deg,
+          rgba(239, 68, 68, 0.55),
+          rgba(245, 158, 11, 0.6),
+          rgba(16, 185, 129, 0.7)
+        );
+        outline: none;
+      }
+      .compare-range::-webkit-slider-thumb {
+        appearance: none;
+        width: 22px;
+        height: 22px;
+        border-radius: 50%;
+        background: #e6fdff;
+        border: 2px solid #0f172a;
+        box-shadow: 0 0 0 4px rgba(0, 229, 255, 0.22);
+        cursor: pointer;
+      }
+      .compare-range::-moz-range-thumb {
+        width: 22px;
+        height: 22px;
+        border-radius: 50%;
+        background: #e6fdff;
+        border: 2px solid #0f172a;
+        box-shadow: 0 0 0 4px rgba(0, 229, 255, 0.22);
+        cursor: pointer;
+      }
+      .compare-grid {
+        margin-top: 18px;
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 12px;
+      }
+      .compare-card {
+        border: 1px solid var(--border);
+        border-radius: 14px;
+        padding: 14px;
+        background: rgba(0, 0, 0, 0.24);
+      }
+      .compare-title {
+        font-size: 11px;
+        letter-spacing: 0.06em;
+        color: var(--muted);
+        margin-bottom: 10px;
+        text-transform: uppercase;
+      }
+      .compare-row {
+        display: grid;
+        grid-template-columns: 1fr auto;
+        gap: 8px;
+        font-size: 13px;
+      }
+      .compare-row + .compare-row {
+        margin-top: 7px;
+      }
+      .compare-row span:first-child {
+        color: #94a3b8;
+      }
+      .compare-row span:last-child {
+        font-family: "Unbounded", sans-serif;
+        font-size: 12px;
+      }
+      .cmp-bad {
+        color: #f87171;
+      }
+      .cmp-good {
+        color: #34d399;
+      }
       @media (max-width: 600px) {
         .calc-results {
           grid-template-columns: 1fr 1fr;
         }
         .calc-box {
           padding: 24px 20px;
+        }
+        .compare-box {
+          padding: 20px 14px;
+        }
+        .compare-grid {
+          grid-template-columns: 1fr;
+        }
+        .compare-top {
+          grid-template-columns: 1fr;
+          gap: 6px;
         }
       }
 
@@ -1953,12 +2202,12 @@
       @keyframes dMoist {
         0%,
         100% {
-          height: 58%;
-          y: 30%;
+          height: 85px;
+          y: 12px;
         }
         50% {
-          height: 8%;
-          y: 80%;
+          height: 9px;
+          y: 88px;
         }
       }
       @keyframes dNeedle {
@@ -2001,21 +2250,21 @@
       @keyframes dFront {
         0%,
         35% {
-          transform: translateX(108px);
+          transform: translateX(108px) translateY(52px);
         }
         60%,
         100% {
-          transform: translateX(74px);
+          transform: translateX(74px) translateY(52px);
         }
       }
       @keyframes dRear {
         0%,
         25% {
-          transform: translateX(38px);
+          transform: translateX(38px) translateY(53px);
         }
         65%,
         100% {
-          transform: translateX(18px);
+          transform: translateX(18px) translateY(53px);
         }
       }
       @keyframes dHands {
@@ -2097,7 +2346,7 @@
           transform: translateX(0);
         }
         50% {
-          transform: translateX(72px);
+          transform: translateX(118px);
         }
       }
       @keyframes dNotif {
@@ -2192,11 +2441,29 @@
       }
       @keyframes dInv {
         0%,
-        100% {
+        18% {
+          y: 42px;
           height: 62px;
         }
-        45% {
+        45%,
+        62% {
+          y: 99px;
           height: 5px;
+        }
+        100% {
+          y: 42px;
+          height: 62px;
+        }
+      }
+      @keyframes dInvPrice {
+        0%,
+        100% {
+          y: 44px;
+          height: 54px;
+        }
+        50% {
+          y: 90px;
+          height: 8px;
         }
       }
       @keyframes dRefill {
@@ -2260,10 +2527,12 @@
       @keyframes dAdapt {
         0%,
         100% {
-          height: 56px;
+          y: 44px;
+          height: 70px;
         }
         50% {
-          height: 22px;
+          y: 88px;
+          height: 26px;
         }
       }
       @keyframes dHeart {
@@ -2341,10 +2610,12 @@
       @keyframes dDemandBar {
         0%,
         100% {
+          y: 74px;
           height: 24px;
         }
         50% {
-          height: 4px;
+          y: 44px;
+          height: 54px;
         }
       }
 
@@ -2466,6 +2737,9 @@
   </head>
   <body>
     <div id="scrollProgress"></div>
+    <div id="pageAura" aria-hidden="true">
+      <div class="page-aura-green"></div>
+    </div>
     <button id="muteBtn" title="Звук">🔊</button>
     <!-- NAV -->
     <nav>
@@ -2475,6 +2749,7 @@
         <li><a href="#effect">Эффект</a></li>
         <li><a href="#awareness">Осознание</a></li>
         <li><a href="#levels">Уровни</a></li>
+        <li><a href="#compare">Сравнение</a></li>
         <li><a href="#howto">С чего начать</a></li>
       </ul>
       <div class="nav-right">
@@ -2843,34 +3118,28 @@
         <div class="dcard">
           <div class="dvis">
             <svg viewBox="0 0 200 128" xmlns="http://www.w3.org/2000/svg">
-              <circle
-                cx="100"
-                cy="64"
-                r="42"
-                fill="rgba(0,229,255,0.05)"
-                stroke="rgba(0,229,255,0.15)"
-                stroke-width="1.5"
-              />
+              <!-- track arc -->
               <path
                 d="M68,98 A36,36,0,1,1,132,98"
                 fill="none"
-                stroke="rgba(0,229,255,0.1)"
-                stroke-width="5"
+                stroke="rgba(0,229,255,0.12)"
+                stroke-width="8"
                 stroke-linecap="round"
               />
+              <!-- progress arc -->
               <path
                 d="M68,98 A36,36,0,1,1,132,98"
                 fill="none"
                 stroke="#00E5FF"
-                stroke-width="5"
+                stroke-width="8"
                 stroke-linecap="round"
                 stroke-dasharray="147"
                 stroke-dashoffset="74"
                 style="animation: dArc 4s ease-in-out infinite"
               />
               <text
-                x="100"
-                y="60"
+                x="106"
+                y="80"
                 text-anchor="middle"
                 fill="#00E5FF"
                 font-size="20"
@@ -2880,8 +3149,8 @@
                 23°
               </text>
               <text
-                x="100"
-                y="76"
+                x="106"
+                y="94"
                 text-anchor="middle"
                 fill="rgba(0,229,255,0.35)"
                 font-size="8"
@@ -4024,16 +4293,16 @@
                 +₽
               </text>
               <circle
-                cx="22"
+                cx="42"
                 cy="64"
                 r="7"
                 fill="rgba(245,158,11,0.7)"
                 style="animation: dBal 3.5s ease-in-out infinite"
               />
               <line
-                x1="70"
+                x1="90"
                 y1="64"
-                x2="130"
+                x2="150"
                 y2="64"
                 stroke="rgba(255,255,255,0.1)"
                 stroke-width="1"
@@ -4549,6 +4818,7 @@
                 цена
               </text>
               <text
+                id="dynPriceValue"
                 x="100"
                 y="70"
                 text-anchor="middle"
@@ -4618,7 +4888,7 @@
                 height="38"
                 rx="2"
                 fill="rgba(96,165,250,0.25)"
-                style="animation: dInv 4s ease-in-out infinite"
+                style="animation: dInvPrice 4s ease-in-out infinite"
               />
             </svg>
           </div>
@@ -4852,7 +5122,7 @@
                 где мой заказ?
               </text>
               <rect
-                x="65"
+                x="50"
                 y="68"
                 width="120"
                 height="28"
@@ -4861,7 +5131,7 @@
                 style="animation: dBub 5s ease-in-out 1.2s infinite"
               />
               <text
-                x="125"
+                x="110"
                 y="80"
                 text-anchor="middle"
                 fill="rgba(167,139,250,0.8)"
@@ -4871,7 +5141,7 @@
                 Заказ #4821 отправлен,
               </text>
               <text
-                x="125"
+                x="110"
                 y="91"
                 text-anchor="middle"
                 fill="rgba(167,139,250,0.7)"
@@ -4996,7 +5266,7 @@
               </g>
               <text
                 x="100"
-                y="115"
+                y="118"
                 text-anchor="middle"
                 fill="rgba(16,185,129,0.35)"
                 font-size="8"
@@ -5646,7 +5916,7 @@
               />
               <text
                 x="115"
-                y="18"
+                y="122"
                 text-anchor="middle"
                 fill="rgba(96,165,250,0.4)"
                 font-size="8"
@@ -7502,6 +7772,110 @@
 
     <div class="divider"></div>
 
+    <!-- HUMAN VS SYSTEM -->
+    <section id="compare">
+      <div class="section-tag">Сравнение</div>
+      <h2 style="margin-bottom: 16px" class="reveal">Человек vs Система</h2>
+      <p
+        style="color: var(--muted); margin-bottom: 34px; font-size: 16px"
+        class="reveal"
+      >
+        Сдвигай уровень автоматизации и смотри, как меняются время, ошибки и
+        стоимость процесса
+      </p>
+      <div class="compare-box reveal">
+        <div class="compare-mode">
+          <button
+            class="cmp-mode-btn active"
+            id="cmpModeHuman"
+            onclick="setCompareMode('human')"
+          >
+            Ручной
+          </button>
+          <button
+            class="cmp-mode-btn"
+            id="cmpModeHybrid"
+            onclick="setCompareMode('hybrid')"
+          >
+            Гибрид
+          </button>
+          <button
+            class="cmp-mode-btn"
+            id="cmpModeSystem"
+            onclick="setCompareMode('system')"
+          >
+            Система
+          </button>
+        </div>
+
+        <div class="compare-top">
+          <div class="compare-top-label">Доля автоматизации процесса</div>
+          <div class="compare-level" id="cmpLevelLabel">15%</div>
+        </div>
+        <input
+          class="compare-range"
+          id="cmpRange"
+          type="range"
+          min="0"
+          max="100"
+          value="15"
+          oninput="updateCompare()"
+        />
+
+        <div class="compare-grid">
+          <div class="compare-card">
+            <div class="compare-title">Скорость процесса</div>
+            <div class="compare-row">
+              <span>Время на задачу</span>
+              <span class="cmp-bad" id="cmpTimeHuman">11.0 мин</span>
+            </div>
+            <div class="compare-row">
+              <span>После автоматизации</span>
+              <span class="cmp-good" id="cmpTimeSystem">3.8 мин</span>
+            </div>
+          </div>
+
+          <div class="compare-card">
+            <div class="compare-title">Качество</div>
+            <div class="compare-row">
+              <span>Ошибок на 100 операций</span>
+              <span class="cmp-bad" id="cmpErrorsHuman">8.5</span>
+            </div>
+            <div class="compare-row">
+              <span>После автоматизации</span>
+              <span class="cmp-good" id="cmpErrorsSystem">5.1</span>
+            </div>
+          </div>
+
+          <div class="compare-card">
+            <div class="compare-title">Экономика</div>
+            <div class="compare-row">
+              <span>Себестоимость операции</span>
+              <span class="cmp-bad" id="cmpCostHuman">176 ₽</span>
+            </div>
+            <div class="compare-row">
+              <span>После автоматизации</span>
+              <span class="cmp-good" id="cmpCostSystem">147 ₽</span>
+            </div>
+          </div>
+
+          <div class="compare-card">
+            <div class="compare-title">Фокус команды</div>
+            <div class="compare-row">
+              <span>Рутина</span>
+              <span class="cmp-bad" id="cmpRoutine">84%</span>
+            </div>
+            <div class="compare-row">
+              <span>Аналитика и развитие</span>
+              <span class="cmp-good" id="cmpFocus">16%</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="divider"></div>
+
     <!-- HOW TO START -->
     <section id="howto">
       <div class="section-tag">Первые шаги</div>
@@ -7622,7 +7996,7 @@
         href="https://t.me/excelerator_mrmavrin"
         target="_blank"
         rel="noopener noreferrer"
-        >t.me/excelerator_mrmavrin</a
+        >Улучшить процессы в своём деле →</a
       >
       <div>
         Источники: McKinsey & Company 2023 · McKinsey Global Institute 2017 ·
@@ -7839,6 +8213,7 @@
           "effect",
           "awareness",
           "levels",
+          "compare",
           "quiz",
           "calc",
           "howto",
@@ -7991,7 +8366,91 @@
         );
       })();
 
+      // ─── DYNAMIC PRICE VALUE (sync with 4s SVG cycle) ───
+      (function () {
+        const priceEl = document.getElementById("dynPriceValue");
+        if (!priceEl) return;
+
+        const PERIOD = 4000;
+        const PRICE_LOW = 2790;
+        const PRICE_MID = 2990;
+        const PRICE_HIGH = 3490;
+
+        function formatRub(value) {
+          return value.toLocaleString("ru-RU") + " ₽";
+        }
+
+        function tick(now) {
+          const t = (now % PERIOD) / PERIOD; // 0..1
+          let value = PRICE_LOW;
+
+          if (t >= 0.2 && t < 0.45) value = PRICE_MID;
+          if (t >= 0.45 && t < 0.7) value = PRICE_HIGH;
+          if (t >= 0.7) value = PRICE_MID;
+
+          priceEl.textContent = formatRub(value);
+          requestAnimationFrame(tick);
+        }
+
+        requestAnimationFrame(tick);
+      })();
+
       // ─── QUIZ LOGIC ───
+      function updateCompare() {
+        const range = document.getElementById("cmpRange");
+        if (!range) return;
+
+        const lvl = parseFloat(range.value) || 0;
+        const label = document.getElementById("cmpLevelLabel");
+        if (label) label.textContent = Math.round(lvl) + "%";
+
+        const timeHuman = (12 - lvl * 0.07).toFixed(1);
+        const timeSystem = (4.3 - lvl * 0.027).toFixed(1);
+        const errHuman = (9.8 - lvl * 0.055).toFixed(1);
+        const errSystem = Math.max(0.7, 6.4 - lvl * 0.058).toFixed(1);
+        const costHuman = Math.round(188 - lvl * 0.85);
+        const costSystem = Math.round(162 - lvl * 1.1);
+        const focus = Math.round(10 + lvl * 0.72);
+        const routine = Math.max(0, 100 - focus);
+
+        const set = (id, value) => {
+          const el = document.getElementById(id);
+          if (el) el.textContent = value;
+        };
+
+        set("cmpTimeHuman", timeHuman + " мин");
+        set("cmpTimeSystem", timeSystem + " мин");
+        set("cmpErrorsHuman", errHuman);
+        set("cmpErrorsSystem", errSystem);
+        set("cmpCostHuman", costHuman + " ₽");
+        set("cmpCostSystem", costSystem + " ₽");
+        set("cmpRoutine", routine + "%");
+        set("cmpFocus", focus + "%");
+      }
+
+      function setCompareMode(mode) {
+        const map = {
+          human: 15,
+          hybrid: 55,
+          system: 90,
+        };
+
+        const range = document.getElementById("cmpRange");
+        if (range && typeof map[mode] === "number") {
+          range.value = map[mode];
+        }
+
+        ["Human", "Hybrid", "System"].forEach((name) => {
+          const btn = document.getElementById("cmpMode" + name);
+          if (!btn) return;
+          btn.classList.toggle("active", name.toLowerCase() === mode);
+        });
+
+        updateCompare();
+      }
+
+      updateCompare();
+
       const quizAnswers = [];
       const quizData = [
         { levels: [0, 1, 2, 3] },
