@@ -771,6 +771,8 @@
         padding: 32px 28px;
         position: relative;
         overflow: hidden;
+        display: flex;
+        flex-direction: column;
         transition:
           transform 0.2s,
           border-color 0.2s;
@@ -798,7 +800,8 @@
       .stat-card p {
         font-size: 13px;
         color: var(--muted);
-        margin-top: 12px;
+        margin-top: auto;
+        padding-top: 16px;
         line-height: 1.5;
       }
       .stat-card .src {
@@ -868,6 +871,7 @@
       .sc1-inner {
         display: flex;
         align-items: center;
+        justify-content: center;
         gap: 16px;
       }
       .sc1-text {
@@ -882,6 +886,7 @@
         color: var(--accent3);
         line-height: 1;
         letter-spacing: -1px;
+        text-align: center;
       }
 
       /* Card 3 — character drop */
@@ -912,8 +917,17 @@
         padding-left: 2px;
       }
 
-      /* Card 4 — bar fill + count */
-      .bar-bg {
+      .sc4-inner {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        position: relative;
+        z-index: 2;
+      }
+      .sc4-inner > p {
+        margin-top: auto;
+        padding-top: 16px;
+      }
         position: absolute;
         bottom: 0;
         left: 0;
@@ -2864,6 +2878,19 @@
           </div>
         </div>
       </div>
+      <p
+        style="
+          color: #334155;
+          font-size: 11px;
+          margin-top: 20px;
+          text-align: center;
+          position: relative;
+          z-index: 1;
+        "
+      >
+        Источники: McKinsey &amp; Company 2023 · McKinsey Global Institute 2017
+        · PwC 2017 · Deloitte 2022
+      </p>
     </div>
 
     <div class="divider"></div>
@@ -2877,14 +2904,15 @@
 
       <div class="def-box reveal">
         <blockquote>
-          Автоматизация — это
-          <em>передача повторяющихся действий, решений и процессов</em> системам
-          и алгоритмам для достижения цели быстрее, точнее и с меньшими
-          усилиями.
+          Автоматизация — это когда
+          <em>скучную, повторяющуюся работу делает машина, а не человек.</em>
+          Вы объясняете один раз, что нужно сделать — и дальше оно работает
+          само.
         </blockquote>
         <p style="margin-top: 20px; font-size: 14px; color: var(--muted)">
-          Она повышает эффективность, снижает ошибки и освобождает время для
-          того, что действительно важно.
+          Например: вместо того чтобы каждый день вручную отправлять напоминания
+          клиентам — вы один раз настраиваете программу, и она делает это за
+          вас. Быстрее, без ошибок и без вашего участия.
         </p>
       </div>
 
@@ -2992,130 +3020,39 @@
           <div class="ba-col bad">
             <div class="ba-col-title">❌ &nbsp;До автоматизации</div>
             <ul class="ba-list">
-              <li>Рутинные задачи занимают большую часть времени</li>
-              <li>Высокий риск ошибок из-за человеческого фактора</li>
-              <li>Сложно масштабировать процессы и бизнес</li>
-              <li>Нет прозрачности и единой картины</li>
-              <li>Постоянная загрузка, выгорание, стресс</li>
-              <li>Рост затрат при увеличении объёма работы</li>
+              <li>
+                Полдня тратишь на одно и то же — копируешь, перекладываешь,
+                напоминаешь
+              </li>
+              <li>Ошибся в одной цифре — всё пошло не так</li>
+              <li>Нанял ещё людей — расходы выросли, а хаос не прошёл</li>
+              <li>
+                Не понимаешь, что вообще происходит, пока не поднимешь всё
+                вручную
+              </li>
+              <li>Постоянно тушишь пожары, а не строишь что-то важное</li>
+              <li>Больше заказов → больше головной боли → больше затрат</li>
             </ul>
           </div>
           <div class="ba-col good">
             <div class="ba-col-title">✅ &nbsp;После автоматизации</div>
             <ul class="ba-list">
-              <li>Рутина автоматизирована, время — на важные задачи</li>
-              <li>Минимум ошибок, стабильное качество и скорость</li>
-              <li>Лёгкое масштабирование без роста затрат</li>
-              <li>Прозрачность, аналитика, контроль показателей</li>
-              <li>Меньше стресса, больше энергии и фокуса</li>
-              <li>Снижение затрат, рост прибыли</li>
+              <li>
+                Скучное делает программа — ты занимаешься только тем, что важно
+              </li>
+              <li>
+                Программа не устаёт и не ошибается — всё делается одинаково
+                хорошо
+              </li>
+              <li>
+                Объём работы вырос в два раза — а нагрузка осталась прежней
+              </li>
+              <li>
+                Видишь всё в реальном времени: что работает, что нет и почему
+              </li>
+              <li>Меньше тревоги, больше времени думать о развитии</li>
+              <li>Больше зарабатываешь, а тратишь столько же</li>
             </ul>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <div class="divider"></div>
-
-    <!-- WORLD EFFECT -->
-    <section id="effect">
-      <div class="section-tag">Мировой эффект</div>
-      <h2 style="margin-bottom: 16px" class="reveal">
-        Цифры, которые<br />говорят сами за себя
-      </h2>
-      <p
-        style="color: var(--muted); margin-bottom: 56px; font-size: 16px"
-        class="reveal"
-      >
-        По данным McKinsey, PwC и Deloitte
-      </p>
-      <div class="stats-grid" id="stats-grid">
-        <!-- Card 1: 61% — дуга заполняется + счётчик -->
-        <div class="stat-card" id="sc1">
-          <div class="sc1-inner">
-            <div class="arc-wrap">
-              <svg class="arc-svg" viewBox="0 0 84 84">
-                <circle class="arc-bg" cx="42" cy="42" r="35" />
-                <circle class="arc-ring" id="arc1" cx="42" cy="42" r="35" />
-              </svg>
-              <div
-                style="
-                  position: absolute;
-                  inset: 0;
-                  display: flex;
-                  align-items: center;
-                  justify-content: center;
-                  font-family: &quot;Unbounded&quot;, sans-serif;
-                  font-size: 18px;
-                  font-weight: 900;
-                  color: var(--accent);
-                "
-                id="arc1-pct"
-              >
-                0%
-              </div>
-            </div>
-          </div>
-          <p>
-            компаний уже внедрили или планируют внедрить автоматизацию в
-            ближайшие 12 месяцев
-          </p>
-          <div class="src">McKinsey & Company, 2023</div>
-        </div>
-
-        <!-- Card 2: ~30% — слот-машина -->
-        <div class="stat-card" id="sc2">
-          <div class="sc2-num" id="sc2-num">—</div>
-          <p style="margin-top: 12px">
-            рабочих задач в мире могут быть автоматизированы уже доступными
-            сегодня технологиями
-          </p>
-          <div class="src">McKinsey Global Institute, 2017</div>
-        </div>
-
-        <!-- Card 3: $15,7 трлн — символы падают один за другим -->
-        <div class="stat-card" id="sc3">
-          <div
-            class="big-num purple"
-            id="sc3-num"
-            style="font-size: 30px; letter-spacing: -1px"
-          >
-            <span class="dc" id="c0">$</span><span class="dc" id="c1">1</span
-            ><span class="dc" id="c2">5</span><span class="dc" id="c3">,</span
-            ><span class="dc" id="c4">7</span
-            ><span class="dc dc-sm" id="c5">&nbsp;трлн</span>
-          </div>
-          <p>
-            дополнительный прирост мирового ВВП к 2030 году благодаря
-            автоматизации
-          </p>
-          <div class="src">PwC, 2017</div>
-        </div>
-
-        <!-- Card 4: 2.6× — фон заливается снизу + счётчик -->
-        <div class="stat-card" id="sc4" style="overflow: hidden">
-          <div class="bar-bg" id="bar4"></div>
-          <div style="position: relative; z-index: 2">
-            <div
-              style="
-                display: flex;
-                align-items: baseline;
-                gap: 2px;
-                line-height: 1;
-                margin-bottom: 4px;
-              "
-            >
-              <div class="big-num orange" id="sc4-num" style="font-size: 52px">
-                0.0
-              </div>
-              <div class="sc4-unit">×</div>
-            </div>
-            <div class="sc4-label">ПРОДУКТИВНОСТЬ</div>
-            <p style="margin-top: 10px">
-              рост производительности в компаниях-лидерах по автоматизации
-              относительно конкурентов
-            </p>
-            <div class="src">Deloitte, 2022</div>
           </div>
         </div>
       </div>
@@ -6721,7 +6658,7 @@
     <!-- AWARENESS SCALE -->
     <section id="awareness">
       <div class="section-tag">Шкала осознания</div>
-      <h2 style="margin-bottom: 16px" class="reveal">На каком уровне вы?</h2>
+      <h2 style="margin-bottom: 16px" class="reveal">На каком ты уровне?</h2>
       <p
         style="
           color: var(--muted);
@@ -6731,9 +6668,9 @@
         "
         class="reveal"
       >
-        Понимание автоматизации — это не просто технологии, это уровень
-        осознания. Чем выше ваш уровень, тем больше контроля, свободы и
-        возможностей.
+        Все люди по-разному понимают, что такое автоматизация — и по-разному ею
+        пользуются. Найди свой уровень — и сразу станет понятно, что делать
+        дальше.
       </p>
 
       <div class="scale-nav reveal" id="scaleTabs">
@@ -6748,7 +6685,7 @@
       </div>
 
       <div class="scale-cue reveal">
-        Выберите уровень один раз: оба блока ниже переключаются одновременно.
+        Нажми на кнопку — оба блока переключаются сразу.
       </div>
 
       <div id="scale-0" class="scale-card active">
@@ -6758,12 +6695,12 @@
             class="sc-badge"
             style="background: rgba(239, 68, 68, 0.12); color: var(--danger)"
           >
-            НЕ ОСОЗНАЁТ
+            ДАЖЕ НЕ ЗНАЕТ
           </div>
-          <div class="sc-name">Не видит автоматизацию</div>
+          <div class="sc-name">Не слышал про автоматизацию</div>
           <div class="sc-desc">
-            Автоматизацию не замечает и не понимает её ценности. Делает всё
-            руками — «так всегда делали».
+            Делает всё руками и не думает, что можно иначе. «Так всегда делали»
+            — и этого хватает.
           </div>
           <div class="sc-rows">
             <div class="sc-row">
@@ -6778,17 +6715,19 @@
             </div>
             <div class="sc-row">
               <div class="sc-row-label">Результат</div>
-              <div class="sc-row-val">Низкая скорость, ошибки, усталость</div>
+              <div class="sc-row-val">
+                Медленно, напряженно, постоянно что-то идёт не так
+              </div>
             </div>
             <div class="sc-row">
               <div class="sc-row-label">Риски</div>
               <div class="sc-row-val">
-                Выгорание, стагнация, потеря конкурентоспособности
+                Устаёшь, напрягаешься, не успеваешь за другими
               </div>
             </div>
             <div class="sc-row">
               <div class="sc-row-label">Фокус</div>
-              <div class="sc-row-val">Выживание</div>
+              <div class="sc-row-val">Просто выжить</div>
             </div>
           </div>
         </div>
@@ -6796,8 +6735,10 @@
           <div class="sc-out-title">ПОСЛЕДСТВИЯ</div>
           <div class="outcome-row">
             <div>
-              <div class="outcome-label">Производительность</div>
-              <div class="outcome-val" style="color: var(--danger)">Низкая</div>
+              <div class="outcome-label">Сколько успеваешь</div>
+              <div class="outcome-val" style="color: var(--danger)">
+                Очень мало
+              </div>
               <div class="outcome-bar">
                 <div
                   class="outcome-bar-fill"
@@ -6810,7 +6751,7 @@
             <div>
               <div class="outcome-label">Качество работы</div>
               <div class="outcome-val" style="color: var(--danger)">
-                Ошибки, нет стандартов
+                Постоянные ошибки
               </div>
               <div class="outcome-bar">
                 <div
@@ -6822,9 +6763,9 @@
           </div>
           <div class="outcome-row">
             <div>
-              <div class="outcome-label">Финансовый эффект</div>
+              <div class="outcome-label">Деньги</div>
               <div class="outcome-val" style="color: var(--danger)">
-                Высокие затраты
+                Тратишь больше, чем мог бы
               </div>
               <div class="outcome-bar">
                 <div
@@ -6836,9 +6777,9 @@
           </div>
           <div class="outcome-row">
             <div>
-              <div class="outcome-label">Масштабируемость</div>
+              <div class="outcome-label">Рост</div>
               <div class="outcome-val" style="color: var(--danger)">
-                Почти невозможна
+                Невозможен
               </div>
               <div class="outcome-bar">
                 <div
@@ -6850,9 +6791,9 @@
           </div>
           <div class="outcome-row">
             <div>
-              <div class="outcome-label">Личное состояние</div>
+              <div class="outcome-label">Как себя чувствуешь</div>
               <div class="outcome-val" style="color: var(--danger)">
-                Перегрузка, стресс
+                Перегружен, всё время уставший
               </div>
               <div class="outcome-bar">
                 <div
@@ -6872,12 +6813,12 @@
             class="sc-badge"
             style="background: rgba(239, 68, 68, 0.08); color: #f87171"
           >
-            ЗНАЕТ, НО НЕ ИСПОЛЬЗУЕТ
+            СЛЫШАЛ, НО НЕ ПОПРОБОВАЛ
           </div>
-          <div class="sc-name">Откладывает на потом</div>
+          <div class="sc-name">Знает, но откладывает</div>
           <div class="sc-desc">
-            Понимает, что есть инструменты, но не внедряет. «Потом разберусь,
-            сейчас не до этого».
+            Слышал, что существуют какие-то инструменты. Но не разобрался.
+            «Потом найду время».
           </div>
           <div class="sc-rows">
             <div class="sc-row">
@@ -6895,13 +6836,13 @@
             <div class="sc-row">
               <div class="sc-row-label">Результат</div>
               <div class="sc-row-val">
-                Теряет время и деньги, возможности упускаются
+                Теряет время и деньги, пропускает шансы
               </div>
             </div>
             <div class="sc-row">
               <div class="sc-row-label">Риски</div>
               <div class="sc-row-val">
-                Упущенная выгода, зависимость от рутины
+                Остаётся позади, пока другие идут вперёд
               </div>
             </div>
             <div class="sc-row">
@@ -6914,8 +6855,10 @@
           <div class="sc-out-title">ПОСЛЕДСТВИЯ</div>
           <div class="outcome-row">
             <div>
-              <div class="outcome-label">Производительность</div>
-              <div class="outcome-val" style="color: #f87171">Низкая</div>
+              <div class="outcome-label">Сколько успеваешь</div>
+              <div class="outcome-val" style="color: #f87171">
+                Всё так же мало
+              </div>
               <div class="outcome-bar">
                 <div
                   class="outcome-bar-fill"
@@ -6938,9 +6881,9 @@
           </div>
           <div class="outcome-row">
             <div>
-              <div class="outcome-label">Финансовый эффект</div>
+              <div class="outcome-label">Деньги</div>
               <div class="outcome-val" style="color: #f87171">
-                Упущенная выгода
+                Упускаешь выгоду
               </div>
               <div class="outcome-bar">
                 <div
@@ -6952,8 +6895,10 @@
           </div>
           <div class="outcome-row">
             <div>
-              <div class="outcome-label">Масштабируемость</div>
-              <div class="outcome-val" style="color: #f87171">Ограниченная</div>
+              <div class="outcome-label">Рост</div>
+              <div class="outcome-val" style="color: #f87171">
+                Сложно расшириться
+              </div>
               <div class="outcome-bar">
                 <div
                   class="outcome-bar-fill"
@@ -6964,8 +6909,10 @@
           </div>
           <div class="outcome-row">
             <div>
-              <div class="outcome-label">Личное состояние</div>
-              <div class="outcome-val" style="color: #f87171">Перегрузка</div>
+              <div class="outcome-label">Как себя чувствуешь</div>
+              <div class="outcome-val" style="color: #f87171">
+                Всё время перегружен
+              </div>
               <div class="outcome-bar">
                 <div
                   class="outcome-bar-fill"
@@ -6984,12 +6931,12 @@
             class="sc-badge"
             style="background: rgba(245, 158, 11, 0.1); color: var(--warn)"
           >
-            НАЧИНАЮЩИЙ ПОЛЬЗОВАТЕЛЬ
+            ПОПРОБОВАЛ, НО КУСОЧНО
           </div>
-          <div class="sc-name">Автоматизирует точечно</div>
+          <div class="sc-name">Использует отдельные инструменты</div>
           <div class="sc-desc">
-            Использует отдельные инструменты для простых задач. Видит эффект, но
-            системы ещё нет.
+            Знает пару хитрых штук. Здесь что-то автоматизировал, там — нет.
+            Целостной картины пока нет.
           </div>
           <div class="sc-rows">
             <div class="sc-row">
@@ -7001,24 +6948,22 @@
             <div class="sc-row">
               <div class="sc-row-label">Делает</div>
               <div class="sc-row-val">
-                Автоматизирует части процессов точечно
+                Автоматизирует часть задач, остальное вручную
               </div>
             </div>
             <div class="sc-row">
               <div class="sc-row-label">Результат</div>
-              <div class="sc-row-val">
-                Экономия времени на отдельных задачах
-              </div>
+              <div class="sc-row-val">Кое-что стало быстрее, но не всё</div>
             </div>
             <div class="sc-row">
               <div class="sc-row-label">Риски</div>
               <div class="sc-row-val">
-                Острова автоматизации, нет целостной системы
+                Беспорядок: одно работает, другое — нет
               </div>
             </div>
             <div class="sc-row">
               <div class="sc-row-label">Фокус</div>
-              <div class="sc-row-val">Эффективность</div>
+              <div class="sc-row-val">Сделать побыстрее</div>
             </div>
           </div>
         </div>
@@ -7026,9 +6971,9 @@
           <div class="sc-out-title">ПОСЛЕДСТВИЯ</div>
           <div class="outcome-row">
             <div>
-              <div class="outcome-label">Производительность</div>
+              <div class="outcome-label">Сколько успеваешь</div>
               <div class="outcome-val" style="color: var(--warn)">
-                Выше средней
+                Хватает, но могло быть больше
               </div>
               <div class="outcome-bar">
                 <div
@@ -7042,7 +6987,7 @@
             <div>
               <div class="outcome-label">Качество работы</div>
               <div class="outcome-val" style="color: var(--warn)">
-                Стабильно на участках
+                Хорошо там, где есть автоматизация
               </div>
               <div class="outcome-bar">
                 <div
@@ -7054,9 +6999,9 @@
           </div>
           <div class="outcome-row">
             <div>
-              <div class="outcome-label">Финансовый эффект</div>
+              <div class="outcome-label">Деньги</div>
               <div class="outcome-val" style="color: var(--warn)">
-                Экономия локально
+                Есть небольшая экономия
               </div>
               <div class="outcome-bar">
                 <div
@@ -7068,9 +7013,9 @@
           </div>
           <div class="outcome-row">
             <div>
-              <div class="outcome-label">Масштабируемость</div>
+              <div class="outcome-label">Рост</div>
               <div class="outcome-val" style="color: var(--warn)">
-                Ограниченная
+                Ещё сложно
               </div>
               <div class="outcome-bar">
                 <div
@@ -7082,9 +7027,9 @@
           </div>
           <div class="outcome-row">
             <div>
-              <div class="outcome-label">Личное состояние</div>
+              <div class="outcome-label">Как себя чувствуешь</div>
               <div class="outcome-val" style="color: var(--warn)">
-                Переменная нагрузка
+                То легче, то напряженнее
               </div>
               <div class="outcome-bar">
                 <div
@@ -7104,12 +7049,12 @@
             class="sc-badge"
             style="background: rgba(96, 165, 250, 0.1); color: #60a5fa"
           >
-            ОСОЗНАННЫЙ ПОЛЬЗОВАТЕЛЬ
+            СТРОИТ СИСТЕМУ
           </div>
-          <div class="sc-name">Строит систему</div>
+          <div class="sc-name">Понимает, как связать всё вместе</div>
           <div class="sc-desc">
-            Строит процессы с автоматизацией, думает системно. «Автоматизация —
-            это часть моей системы».
+            Автоматизация — это не отдельные штуки, а единая машина. Настраивает
+            процессы, чтобы они работали сами.
           </div>
           <div class="sc-rows">
             <div class="sc-row">
@@ -7121,20 +7066,16 @@
             <div class="sc-row">
               <div class="sc-row-label">Делает</div>
               <div class="sc-row-val">
-                Настраивает процессы, интегрирует инструменты
+                Настраивает процессы, связывает инструменты
               </div>
             </div>
             <div class="sc-row">
               <div class="sc-row-label">Результат</div>
-              <div class="sc-row-val">
-                Стабильные результаты, меньше ручной работы
-              </div>
+              <div class="sc-row-val">Стабильно, мало ручной работы</div>
             </div>
             <div class="sc-row">
               <div class="sc-row-label">Риски</div>
-              <div class="sc-row-val">
-                Сложности интеграций, недостаток экспертизы
-              </div>
+              <div class="sc-row-val">Сложно совместить всё вместе</div>
             </div>
             <div class="sc-row">
               <div class="sc-row-label">Фокус</div>
@@ -7146,8 +7087,10 @@
           <div class="sc-out-title">ПОСЛЕДСТВИЯ</div>
           <div class="outcome-row">
             <div>
-              <div class="outcome-label">Производительность</div>
-              <div class="outcome-val" style="color: #60a5fa">Высокая</div>
+              <div class="outcome-label">Сколько успеваешь</div>
+              <div class="outcome-val" style="color: #60a5fa">
+                Много, остаётся время
+              </div>
               <div class="outcome-bar">
                 <div
                   class="outcome-bar-fill"
@@ -7160,7 +7103,7 @@
             <div>
               <div class="outcome-label">Качество работы</div>
               <div class="outcome-val" style="color: #60a5fa">
-                Высокое и предсказуемое
+                Хорошое, без сюрпризов
               </div>
               <div class="outcome-bar">
                 <div
@@ -7172,8 +7115,10 @@
           </div>
           <div class="outcome-row">
             <div>
-              <div class="outcome-label">Финансовый эффект</div>
-              <div class="outcome-val" style="color: #60a5fa">Рост прибыли</div>
+              <div class="outcome-label">Деньги</div>
+              <div class="outcome-val" style="color: #60a5fa">
+                Зарабатываешь больше
+              </div>
               <div class="outcome-bar">
                 <div
                   class="outcome-bar-fill"
@@ -7184,9 +7129,9 @@
           </div>
           <div class="outcome-row">
             <div>
-              <div class="outcome-label">Масштабируемость</div>
+              <div class="outcome-label">Рост</div>
               <div class="outcome-val" style="color: #60a5fa">
-                Лёгкая и управляемая
+                Лёгко расширяться
               </div>
               <div class="outcome-bar">
                 <div
@@ -7198,9 +7143,9 @@
           </div>
           <div class="outcome-row">
             <div>
-              <div class="outcome-label">Личное состояние</div>
+              <div class="outcome-label">Как себя чувствуешь</div>
               <div class="outcome-val" style="color: #60a5fa">
-                Фокус на развитии
+                Есть время на главное
               </div>
               <div class="outcome-bar">
                 <div
@@ -7220,41 +7165,37 @@
             class="sc-badge"
             style="background: rgba(16, 185, 129, 0.1); color: var(--accent3)"
           >
-            ПРОДВИНУТЫЙ ПРАКТИК
+            ТАК У НЕМНОГИХ
           </div>
-          <div class="sc-name">Оптимизирует постоянно</div>
+          <div class="sc-name">Постоянно улучшает</div>
           <div class="sc-desc">
-            Постоянно улучшает и оптимизирует автоматизацию. «Ищу узкие места и
-            улучшаю постоянно».
+            Смотрит, что работает не идеально, и исправляет. Не просто
+            пользуется — делает лучше каждый раз.
           </div>
           <div class="sc-rows">
             <div class="sc-row">
               <div class="sc-row-label">Думает</div>
               <div class="sc-row-val">
-                «Ищу узкие места и улучшаю постоянно»
+                «Где у меня узкое место? Сейчас исправлю»
               </div>
             </div>
             <div class="sc-row">
               <div class="sc-row-label">Делает</div>
-              <div class="sc-row-val">
-                Анализирует, автоматизирует сквозные процессы
-              </div>
+              <div class="sc-row-val">Анализирует и дорабатывает процессы</div>
             </div>
             <div class="sc-row">
               <div class="sc-row-label">Результат</div>
-              <div class="sc-row-val">
-                Высокая эффективность, низкие затраты
-              </div>
+              <div class="sc-row-val">Быстро, надёжно, дёшево</div>
             </div>
             <div class="sc-row">
               <div class="sc-row-label">Риски</div>
               <div class="sc-row-val">
-                Перегрузка инструментами, сложность поддержки
+                Слишком много инструментов, трудно поддерживать
               </div>
             </div>
             <div class="sc-row">
               <div class="sc-row-label">Фокус</div>
-              <div class="sc-row-val">Оптимизация</div>
+              <div class="sc-row-val">Сделать ещё лучше</div>
             </div>
           </div>
         </div>
@@ -7262,9 +7203,9 @@
           <div class="sc-out-title">ПОСЛЕДСТВИЯ</div>
           <div class="outcome-row">
             <div>
-              <div class="outcome-label">Производительность</div>
+              <div class="outcome-label">Сколько успеваешь</div>
               <div class="outcome-val" style="color: var(--accent3)">
-                Очень высокая
+                Очень много
               </div>
               <div class="outcome-bar">
                 <div
@@ -7290,9 +7231,9 @@
           </div>
           <div class="outcome-row">
             <div>
-              <div class="outcome-label">Финансовый эффект</div>
+              <div class="outcome-label">Деньги</div>
               <div class="outcome-val" style="color: var(--accent3)">
-                Существенный рост
+                Зарабатываешь заметно больше
               </div>
               <div class="outcome-bar">
                 <div
@@ -7304,9 +7245,9 @@
           </div>
           <div class="outcome-row">
             <div>
-              <div class="outcome-label">Масштабируемость</div>
+              <div class="outcome-label">Рост</div>
               <div class="outcome-val" style="color: var(--accent3)">
-                Высокая
+                Без лишних усилий
               </div>
               <div class="outcome-bar">
                 <div
@@ -7318,9 +7259,9 @@
           </div>
           <div class="outcome-row">
             <div>
-              <div class="outcome-label">Личное состояние</div>
+              <div class="outcome-label">Как себя чувствуешь</div>
               <div class="outcome-val" style="color: var(--accent3)">
-                Высокая устойчивость
+                Устойчиво, нет хаоса
               </div>
               <div class="outcome-bar">
                 <div
@@ -7340,41 +7281,41 @@
             class="sc-badge"
             style="background: rgba(0, 229, 255, 0.1); color: var(--accent)"
           >
-            СТРАТЕГ И АРХИТЕКТОР
+            ТАКИХ ЕДИНИЦЫ
           </div>
-          <div class="sc-name">Управляет как бизнес-активом</div>
+          <div class="sc-name">Автоматизация — это его бизнес</div>
           <div class="sc-desc">
-            Управляет автоматизацией как бизнес-активом. Строит архитектуру
-            систем, масштабирует бизнес через данные.
+            Строит всю архитектуру сам. У него не просто инструменты — всё
+            связано в единую систему, и её данные диктуют решения.
           </div>
           <div class="sc-rows">
             <div class="sc-row">
               <div class="sc-row-label">Думает</div>
               <div class="sc-row-val">
-                «Автоматизация создаёт конкурентное преимущество»
+                «Это моё преимущество, которое нельзя повторить»
               </div>
             </div>
             <div class="sc-row">
               <div class="sc-row-label">Делает</div>
               <div class="sc-row-val">
-                Строит архитектуру систем, данные для решений
+                Строит архитектуру, данные — в основе решений
               </div>
             </div>
             <div class="sc-row">
               <div class="sc-row-label">Результат</div>
               <div class="sc-row-val">
-                Масштабируемый бизнес, данные как актив
+                Бизнес растёт сам, без ежедневного участия
               </div>
             </div>
             <div class="sc-row">
               <div class="sc-row-label">Риски</div>
               <div class="sc-row-val">
-                Ошибки стратегии, неправильный выбор систем
+                Ошибка в архитектуре дорого обходится
               </div>
             </div>
             <div class="sc-row">
               <div class="sc-row-label">Фокус</div>
-              <div class="sc-row-val">Трансформация</div>
+              <div class="sc-row-val">Перестроить всё</div>
             </div>
           </div>
         </div>
@@ -7382,9 +7323,9 @@
           <div class="sc-out-title">ПОСЛЕДСТВИЯ</div>
           <div class="outcome-row">
             <div>
-              <div class="outcome-label">Производительность</div>
+              <div class="outcome-label">Сколько успеваешь</div>
               <div class="outcome-val" style="color: var(--accent)">
-                Масштабируемая
+                Бизнес работает без тебя
               </div>
               <div class="outcome-bar">
                 <div
@@ -7410,9 +7351,9 @@
           </div>
           <div class="outcome-row">
             <div>
-              <div class="outcome-label">Финансовый эффект</div>
+              <div class="outcome-label">Деньги</div>
               <div class="outcome-val" style="color: var(--accent)">
-                Максимальный
+                Максимальный эффект
               </div>
               <div class="outcome-bar">
                 <div
@@ -7424,9 +7365,9 @@
           </div>
           <div class="outcome-row">
             <div>
-              <div class="outcome-label">Масштабируемость</div>
+              <div class="outcome-label">Рост</div>
               <div class="outcome-val" style="color: var(--accent)">
-                Максимальная
+                Без потолка
               </div>
               <div class="outcome-bar">
                 <div
@@ -7438,7 +7379,7 @@
           </div>
           <div class="outcome-row">
             <div>
-              <div class="outcome-label">Личное состояние</div>
+              <div class="outcome-label">Как себя чувствуешь</div>
               <div class="outcome-val" style="color: var(--accent)">
                 Свобода и время
               </div>
@@ -7569,54 +7510,57 @@
           <div class="auto-col-title">✅ Хорошо поддаётся</div>
           <div class="auto-item">
             <div class="auto-icon">🔁</div>
-            Повторяющиеся операции и задачи
+            Одно и то же каждый день — отчёты, переносы данных, заполнение
+            таблиц
           </div>
           <div class="auto-item">
             <div class="auto-icon">📊</div>
-            Работа с данными и аналитикой
+            Собрать цифры из разных мест и свести их в одну картину
           </div>
           <div class="auto-item">
             <div class="auto-icon">🔢</div>
-            Расчёты и сопоставления
+            Посчитать, сравнить, проверить — без калькулятора и риска ошибиться
           </div>
           <div class="auto-item">
             <div class="auto-icon">📄</div>
-            Обработка документов и форм
+            Заполнять, отправлять и сортировать бумаги, счета, договоры
           </div>
           <div class="auto-item">
             <div class="auto-icon">💬</div>
-            Рутинные коммуникации и уведомления
+            Писать одинаковые письма и напоминания — клиентам, коллегам,
+            партнёрам
           </div>
           <div class="auto-item">
             <div class="auto-icon">🔔</div>
-            Мониторинг и оповещения
+            Следить, не сломалось ли что-то, и сразу сигналить если да
           </div>
         </div>
         <div class="auto-col cant">
           <div class="auto-col-title">⚠️ Сложно автоматизировать</div>
           <div class="auto-item">
             <div class="auto-icon">🎨</div>
-            Творчество и создание нового
+            Придумать что-то с нуля — идею, дизайн, историю
           </div>
           <div class="auto-item">
             <div class="auto-icon">🤝</div>
-            Эмпатия и живое общение
+            Понять человека, поддержать, договориться — когда важен живой
+            контакт
           </div>
           <div class="auto-item">
             <div class="auto-icon">🧭</div>
-            Стратегические решения в неопределённости
+            Принять решение, когда нет чёткого ответа и всё непредсказуемо
           </div>
           <div class="auto-item">
             <div class="auto-icon">⭐</div>
-            Уникальные нестандартные задачи
+            Задачи, которые случаются один раз и больше никогда
           </div>
           <div class="auto-item">
             <div class="auto-icon">🎭</div>
-            Работа с ценностями и культурой
+            Строить культуру, доверие, ценности внутри команды
           </div>
           <div class="auto-item">
             <div class="auto-icon">🌊</div>
-            Физические задачи в изменчивой среде
+            Работать руками там, где каждый раз всё по-разному
           </div>
         </div>
       </div>
@@ -7684,87 +7628,150 @@
         style="color: var(--muted); margin-bottom: 40px; font-size: 16px"
         class="reveal"
       >
-        3 вопроса — и ты узнаешь, на каком уровне автоматизации находишься
+        5 вопросов — и ты узнаешь, на каком уровне автоматизации находишься
       </p>
       <div class="quiz-section reveal">
         <div class="quiz-progress-dots">
           <div class="quiz-dot done" id="qd0"></div>
           <div class="quiz-dot" id="qd1"></div>
           <div class="quiz-dot" id="qd2"></div>
+          <div class="quiz-dot" id="qd3"></div>
+          <div class="quiz-dot" id="qd4"></div>
         </div>
+
         <div class="quiz-step active" id="qs0">
           <div class="quiz-q">
-            Как ты сейчас выполняешь повторяющиеся задачи (отчёты, переписка,
-            сортировка)?
+            Как ты сейчас выполняешь повторяющиеся задачи — отчёты, переписку,
+            сортировку данных?
           </div>
           <div class="quiz-options">
             <button class="quiz-opt" onclick="quizAnswer(0, 0)">
               Всё вручную, каждый раз заново
             </button>
             <button class="quiz-opt" onclick="quizAnswer(0, 1)">
-              Использую шаблоны или подсказки
+              Использую шаблоны или готовые чек-листы
             </button>
             <button class="quiz-opt" onclick="quizAnswer(0, 2)">
-              Часть автоматизирована, часть — нет
+              Часть автоматизирована, часть — ещё нет
             </button>
             <button class="quiz-opt" onclick="quizAnswer(0, 3)">
-              Почти всё работает само
+              Почти всё работает само, я только контролирую
             </button>
           </div>
         </div>
+
         <div class="quiz-step" id="qs1">
           <div class="quiz-q">
-            Если система сделала ошибку — что происходит?
+            Когда появляется новая повторяющаяся задача, что ты делаешь?
           </div>
           <div class="quiz-options">
             <button class="quiz-opt" onclick="quizAnswer(1, 0)">
-              Я сам всё проверяю — ошибок почти нет
+              Просто делаю вручную, как привык
             </button>
             <button class="quiz-opt" onclick="quizAnswer(1, 1)">
-              Я замечаю, когда что-то выглядит странно
+              Ищу шаблон или инструкцию в интернете
             </button>
             <button class="quiz-opt" onclick="quizAnswer(1, 2)">
-              Есть уведомления при исключениях
+              Сразу думаю, как это можно автоматизировать
             </button>
             <button class="quiz-opt" onclick="quizAnswer(1, 3)">
-              Система сама обнаруживает и исправляет
+              Настраиваю автоматизацию ещё до первого повтора
             </button>
           </div>
         </div>
+
         <div class="quiz-step" id="qs2">
           <div class="quiz-q">
-            Сколько времени ты тратишь на рутину в неделю?
+            Сколько часов в неделю уходит на рутинные задачи?
           </div>
           <div class="quiz-options">
             <button class="quiz-opt" onclick="quizAnswer(2, 0)">
-              Больше 10 часов
+              Больше 15 часов — это большая часть моего времени
             </button>
             <button class="quiz-opt" onclick="quizAnswer(2, 1)">
-              5–10 часов
+              8–15 часов — много, но я привык
             </button>
             <button class="quiz-opt" onclick="quizAnswer(2, 2)">
-              2–5 часов
+              3–8 часов — заметно, но терпимо
             </button>
             <button class="quiz-opt" onclick="quizAnswer(2, 3)">
-              Меньше 2 часов
+              Меньше 3 часов — рутина не съедает мой день
             </button>
           </div>
         </div>
+
+        <div class="quiz-step" id="qs3">
+          <div class="quiz-q">
+            Как ты узнаёшь, что что-то пошло не так в рабочем процессе?
+          </div>
+          <div class="quiz-options">
+            <button class="quiz-opt" onclick="quizAnswer(3, 0)">
+              Когда клиент пожаловался или всё уже рухнуло
+            </button>
+            <button class="quiz-opt" onclick="quizAnswer(3, 1)">
+              Когда сам нахожу при ручной проверке
+            </button>
+            <button class="quiz-opt" onclick="quizAnswer(3, 2)">
+              Приходит уведомление — но настроено не везде
+            </button>
+            <button class="quiz-opt" onclick="quizAnswer(3, 3)">
+              Система сигналит сама, я только подтверждаю решение
+            </button>
+          </div>
+        </div>
+
+        <div class="quiz-step" id="qs4">
+          <div class="quiz-q">
+            Если ты заболеешь на неделю — что произойдёт с твоей работой?
+          </div>
+          <div class="quiz-options">
+            <button class="quiz-opt" onclick="quizAnswer(4, 0)">
+              Всё встанет — без меня никто не справится
+            </button>
+            <button class="quiz-opt" onclick="quizAnswer(4, 1)">
+              Коллеги подхватят, но будет хаос и потери
+            </button>
+            <button class="quiz-opt" onclick="quizAnswer(4, 2)">
+              Основные процессы продолжат работать сами
+            </button>
+            <button class="quiz-opt" onclick="quizAnswer(4, 3)">
+              Клиенты даже не заметят моего отсутствия
+            </button>
+          </div>
+        </div>
+
         <div class="quiz-result" id="quizResult">
-          <div class="quiz-result-badge" id="qrBadge">УРОВЕНЬ 1</div>
+          <div class="quiz-result-badge" id="qrBadge">УРОВЕНЬ 0</div>
           <div class="quiz-result-title" id="qrTitle">Ручной труд</div>
           <div class="quiz-result-desc" id="qrDesc"></div>
+          <div
+            id="qrNext"
+            style="
+              margin: 16px 0 24px;
+              padding: 14px 18px;
+              background: rgba(0, 229, 255, 0.07);
+              border-left: 3px solid var(--accent);
+              border-radius: 8px;
+              font-size: 14px;
+              color: var(--muted);
+              text-align: left;
+            "
+          ></div>
+          <button
+            class="quiz-restart"
+            onclick="quizRestart()"
+            style="margin-bottom: 14px"
+          >
+            Пройти ещё раз</button
+          ><br />
           <a
             class="btn-primary"
             href="https://t.me/excelerator_mrmavrin/12"
             target="_blank"
             rel="noopener noreferrer"
-            style="display: inline-flex; margin-bottom: 12px"
-            >Разобраться в Telegram</a
-          ><br />
-          <button class="quiz-restart" onclick="quizRestart()">
-            Пройти ещё раз
-          </button>
+            style="display: inline-flex"
+            >Разобраться в Telegram →</a
+          >
         </div>
       </div>
     </section>
@@ -7774,16 +7781,19 @@
     <!-- CALC -->
     <section id="calc">
       <div class="section-tag">Калькулятор</div>
-      <h2 style="margin-bottom: 16px" class="reveal">Сколько ты теряешь?</h2>
+      <h2 style="margin-bottom: 16px" class="reveal">
+        Сколько жизни уходит на рутину?
+      </h2>
       <p
         style="color: var(--muted); margin-bottom: 40px; font-size: 16px"
         class="reveal"
       >
-        Введи, сколько часов в неделю уходит на рутину
+        Укажи, сколько часов в неделю ты тратишь на скучные повторяющиеся дела —
+        и увидишь, сколько это в реальности
       </p>
       <div class="calc-box reveal">
         <div class="calc-row">
-          <div class="calc-label">Часов рутины в неделю</div>
+          <div class="calc-label">Часов в неделю уходит на рутину</div>
           <div class="calc-stepper">
             <button class="calc-step-btn" onclick="stepCalc(-1)">−</button>
             <div class="calc-step-val" id="calcDisplay">5</div>
@@ -7801,15 +7811,22 @@
         <div class="calc-results">
           <div class="calc-res-card">
             <div class="calc-res-num" id="calcYear">0</div>
-            <div class="calc-res-label">часов в год</div>
+            <div class="calc-res-label">
+              часов в год — столько ты тратишь впустую
+            </div>
           </div>
           <div class="calc-res-card">
             <div class="calc-res-num" id="calcDays">0</div>
-            <div class="calc-res-label">полных суток</div>
+            <div class="calc-res-label">
+              суток подряд — как если бы ты не спал и не ел, только делал рутину
+            </div>
           </div>
           <div class="calc-res-card">
             <div class="calc-res-num" id="calcMonths">0</div>
-            <div class="calc-res-label">рабочих месяцев за 5 лет</div>
+            <div class="calc-res-label">
+              рабочих месяцев за 5 лет — целые месяцы твоей жизни, потраченные
+              на одно и то же
+            </div>
           </div>
         </div>
       </div>
@@ -7825,8 +7842,8 @@
         style="color: var(--muted); margin-bottom: 34px; font-size: 16px"
         class="reveal"
       >
-        Сдвигай уровень автоматизации и смотри, как меняются время, ошибки и
-        стоимость процесса
+        Потащи ползунок — и смотри, что меняется, когда половину работы берёт на
+        себя программа
       </p>
       <div class="compare-box reveal">
         <div class="compare-mode">
@@ -7854,7 +7871,9 @@
         </div>
 
         <div class="compare-top">
-          <div class="compare-top-label">Доля автоматизации процесса</div>
+          <div class="compare-top-label">
+            Сколько работы уже делает программа, а не человек
+          </div>
           <div class="compare-level" id="cmpLevelLabel">15%</div>
         </div>
         <input
@@ -7869,49 +7888,49 @@
 
         <div class="compare-grid">
           <div class="compare-card">
-            <div class="compare-title">Скорость процесса</div>
+            <div class="compare-title">⁠⏱️ Скорость</div>
             <div class="compare-row">
-              <span>Время на задачу</span>
+              <span>Сейчас человек тратит на одну задачу</span>
               <span class="cmp-bad" id="cmpTimeHuman">11.0 мин</span>
             </div>
             <div class="compare-row">
-              <span>После автоматизации</span>
+              <span>А автоматизация справилась бы за</span>
               <span class="cmp-good" id="cmpTimeSystem">3.8 мин</span>
             </div>
           </div>
 
           <div class="compare-card">
-            <div class="compare-title">Качество</div>
+            <div class="compare-title">❌ Ошибки</div>
             <div class="compare-row">
-              <span>Ошибок на 100 операций</span>
+              <span>Сотрудник допускает ошибок из 100</span>
               <span class="cmp-bad" id="cmpErrorsHuman">8.5</span>
             </div>
             <div class="compare-row">
-              <span>После автоматизации</span>
+              <span>Программа допускает</span>
               <span class="cmp-good" id="cmpErrorsSystem">5.1</span>
             </div>
           </div>
 
           <div class="compare-card">
-            <div class="compare-title">Экономика</div>
+            <div class="compare-title">₽ Стоимость</div>
             <div class="compare-row">
-              <span>Себестоимость операции</span>
+              <span>Одна операция руками обходится</span>
               <span class="cmp-bad" id="cmpCostHuman">176 ₽</span>
             </div>
             <div class="compare-row">
-              <span>После автоматизации</span>
+              <span>С автоматизацией то же самое стоит</span>
               <span class="cmp-good" id="cmpCostSystem">147 ₽</span>
             </div>
           </div>
 
           <div class="compare-card">
-            <div class="compare-title">Фокус команды</div>
+            <div class="compare-title">🎯 На что уходит время команды</div>
             <div class="compare-row">
-              <span>Рутина</span>
+              <span>Скучная рутина</span>
               <span class="cmp-bad" id="cmpRoutine">84%</span>
             </div>
             <div class="compare-row">
-              <span>Аналитика и развитие</span>
+              <span>Развитие и нужное</span>
               <span class="cmp-good" id="cmpFocus">16%</span>
             </div>
           </div>
@@ -8043,9 +8062,16 @@
         rel="noopener noreferrer"
         >Улучшить процессы в своём деле →</a
       >
-      <div>
-        Источники: McKinsey & Company 2023 · McKinsey Global Institute 2017 ·
-        PwC 2017 · Deloitte 2022
+      <div style="margin-top: 24px; font-size: 12px; color: #334155">
+        Разработал
+        <a
+          href="https://t.me/excelerator_mrmavrin"
+          target="_blank"
+          rel="noopener noreferrer"
+          style="color: var(--accent); text-decoration: none"
+          >excelerator</a
+        >
+        в общеобразовательных целях.
       </div>
     </footer>
 
@@ -8541,50 +8567,56 @@
       updateCompare();
 
       const quizAnswers = [];
-      const quizData = [
-        { levels: [0, 1, 2, 3] },
-        { levels: [0, 1, 2, 3] },
-        { levels: [0, 1, 2, 3] },
-      ];
       const quizResults = [
         {
+          badge: "УРОВЕНЬ 0",
+          title: "Всё вручную",
+          desc: "Ты делаешь большинство задач руками, по памяти — и тратишь на это огромное количество времени. Это не плохо, это просто старт. Хорошая новость: даже один шаблон или один макрос уже освободит несколько часов в неделю.",
+          next: "С чего начать: выбери одну задачу, которую делаешь чаще всего, и найди для неё готовый шаблон. Google Sheets, Notion, Telegram-бот — любой инструмент лучше, чем ничего.",
+        },
+        {
           badge: "УРОВЕНЬ 1",
-          title: "Ручной труд",
-          desc: "Ты пока делаешь всё вручную. Хорошая новость: даже маленький первый шаг — шаблон или макрос — уже освобождает часы. Начни с одной повторяющейся задачи.",
+          title: "Первые шаги",
+          desc: "Ты знаешь об инструментах и иногда пользуешься ими, но системы пока нет. Каждая задача — отдельная история. Рутина всё ещё съедает значительную часть твоего времени.",
+          next: "Следующий шаг: перестань искать шаблоны по запросу — начни их сохранять и систематизировать. Потом один из них станет автоматическим.",
         },
         {
           badge: "УРОВЕНЬ 2",
-          title: "Поддержка",
-          desc: "Ты уже используешь инструменты-помощники, но большую часть работы делаешь сам. Следующий шаг — настроить автозапуск для хотя бы одного процесса.",
+          title: "Частичная автоматизация",
+          desc: "Часть процессов уже работает сама, но целостной системы нет. Там автоматизировано, здесь — ещё нет. Ты видишь разницу, но не всегда понимаешь, как связать всё вместе.",
+          next: "Следующий шаг: выпиши все процессы, которые ты до сих пор делаешь вручную, и выбери один для автоматизации на этой неделе.",
         },
         {
           badge: "УРОВЕНЬ 3",
-          title: "Частичная автоматизация",
-          desc: "Часть задач работает сама, часть — нет. Хороший баланс, но есть потенциал. Посмотри, что ещё можно делегировать системе.",
+          title: "Осознанная система",
+          desc: "Ты думаешь системно и строишь процессы с автоматизацией. Большинство рутины работает само. Ты тратишь время на важное — а не на повторяющееся.",
+          next: "Следующий шаг: посмотри, где в твоей системе ещё есть ручные звенья — и замени их. Цель — чтобы ты работал только с исключениями.",
         },
         {
           badge: "УРОВЕНЬ 4–5",
           title: "Высокая автономность",
-          desc: "Твои процессы почти не требуют ручного вмешательства. Ты работаешь с исключениями и стратегическими решениями — это именно то, к чему стоит стремиться.",
+          desc: "Твои процессы почти не требуют ручного участия. Ты занимаешься стратегией и решениями — а не операционкой. Именно так должен работать современный специалист или бизнес.",
+          next: "Следующий шаг: поделись своим опытом или масштабируй систему — обучи команду, автоматизируй ещё один уровень или начни зарабатывать на своей экспертизе.",
         },
       ];
 
       function quizAnswer(step, val) {
         quizAnswers[step] = val;
         const dots = document.querySelectorAll(".quiz-dot");
-        if (step < 2) {
+        if (step < 4) {
           document.getElementById("qs" + step).classList.remove("active");
           document.getElementById("qs" + (step + 1)).classList.add("active");
           dots[step + 1].classList.add("done");
         } else {
-          // calculate result
           const sum = quizAnswers.reduce((a, b) => a + b, 0);
-          const idx = sum <= 1 ? 0 : sum <= 4 ? 1 : sum <= 7 ? 2 : 3;
+          const idx =
+            sum <= 2 ? 0 : sum <= 5 ? 1 : sum <= 9 ? 2 : sum <= 13 ? 3 : 4;
           const r = quizResults[idx];
           document.getElementById("qrBadge").textContent = r.badge;
           document.getElementById("qrTitle").textContent = r.title;
           document.getElementById("qrDesc").textContent = r.desc;
-          document.getElementById("qs2").classList.remove("active");
+          document.getElementById("qrNext").textContent = r.next;
+          document.getElementById("qs4").classList.remove("active");
           document.getElementById("quizResult").style.display = "block";
           dots.forEach((d) => d.classList.add("done"));
         }
