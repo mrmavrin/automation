@@ -8241,7 +8241,7 @@
             el.style.setProperty("--mx", t.clientX + "px");
             el.style.setProperty("--my", t.clientY + "px");
             el.innerHTML =
-              '<svg viewBox="0 0 48 34" xmlns="http://www.w3.org/2000/svg"><ellipse cx="24" cy="20" rx="16" ry="6" /><path d="M15 19 Q24 6 33 19" /><circle cx="24" cy="15" r="3.3" /><line x1="8" y1="29" x2="40" y2="29" /></svg>';
+              '<svg viewBox="0 0 48 50" xmlns="http://www.w3.org/2000/svg"><line x1="10" y1="28" x2="4" y2="42" stroke-width="1.5" /><line x1="24" y1="30" x2="24" y2="46" stroke-width="1.5" /><line x1="38" y1="28" x2="44" y2="42" stroke-width="1.5" /><ellipse cx="24" cy="26" rx="18" ry="5" /><path d="M 8 26 Q 8 10 24 8 Q 40 10 40 26" /><circle cx="24" cy="15" r="2.2" /></svg>';
             document.body.appendChild(el);
             el.addEventListener("animationend", () => el.remove());
           },
@@ -8429,6 +8429,30 @@
           },
           true,
         );
+
+        // mobile touch support
+        if (window.matchMedia("(any-pointer: coarse)").matches) {
+          const targets2 =
+            ".level-item,.scale-btn,.domain-tab,.ba-btn,.quiz-opt,.btn-primary,.btn-ghost,.calc-input";
+          document.querySelectorAll(targets2).forEach((el) => {
+            el.addEventListener("touchstart", playTick, { passive: true });
+          });
+
+          // delegated for dynamically added elements on touch
+          document.addEventListener(
+            "touchstart",
+            (e) => {
+              if (
+                e.target.closest &&
+                e.target.closest(
+                  ".quiz-opt, .btn-primary, .btn-ghost, .level-item, .scale-btn, .domain-tab, .ba-btn, .calc-input",
+                )
+              )
+                playTick();
+            },
+            { capture: true, passive: true },
+          );
+        }
       })();
 
       // ─── DYNAMIC PRICE VALUE (sync with 4s SVG cycle) ───
