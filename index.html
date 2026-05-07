@@ -319,6 +319,8 @@
       }
       .hero-title {
         margin-bottom: 28px;
+        overflow-wrap: break-word;
+        hyphens: auto;
       }
       .hero-title span {
         color: var(--accent);
@@ -779,7 +781,7 @@
       }
       .stat-card .big-num {
         font-family: "Unbounded", sans-serif;
-        font-size: 42px;
+        font-size: 32px;
         font-weight: 900;
         color: var(--accent);
         line-height: 1;
@@ -875,7 +877,7 @@
       /* Card 2 — slot scramble (no extra CSS needed, pure JS) */
       .sc2-num {
         font-family: "Unbounded", sans-serif;
-        font-size: 42px;
+        font-size: 32px;
         font-weight: 900;
         color: var(--accent3);
         line-height: 1;
@@ -1336,6 +1338,42 @@
         stroke-width: 2;
       }
       /* ─── SCROLL PROGRESS ─── */
+      /* ─── TAP RIPPLE (mobile) ─── */
+      .tap-ripple {
+        position: fixed;
+        pointer-events: none;
+        z-index: 9999;
+        border-radius: 50%;
+        width: 0;
+        height: 0;
+        border: 2px solid #00e5ff;
+        box-shadow:
+          0 0 10px rgba(0, 229, 255, 0.7),
+          inset 0 0 6px rgba(0, 229, 255, 0.25);
+        transform: translate(-50%, -50%) scale(0);
+        opacity: 1;
+        animation: tapRipple 0.55s ease-out forwards;
+      }
+      @keyframes tapRipple {
+        0% {
+          width: 0;
+          height: 0;
+          opacity: 1;
+          transform: translate(-50%, -50%) scale(1);
+        }
+        60% {
+          width: 52px;
+          height: 52px;
+          opacity: 0.7;
+          transform: translate(-50%, -50%) scale(1);
+        }
+        100% {
+          width: 72px;
+          height: 72px;
+          opacity: 0;
+          transform: translate(-50%, -50%) scale(1);
+        }
+      }
       #scrollProgress {
         position: fixed;
         top: 0;
@@ -2635,14 +2673,14 @@
           padding: 80px 20px;
         }
         h1 {
-          font-size: clamp(30px, 10.5vw, 46px);
+          font-size: clamp(24px, 7.5vw, 38px);
         }
         .hero-title {
           line-height: 1.05;
         }
         .hero-title span {
           display: inline-block;
-          font-size: clamp(28px, 10vw, 42px);
+          font-size: clamp(22px, 7.5vw, 36px);
         }
         .hero-inner {
           padding: 0 20px;
@@ -3033,7 +3071,7 @@
           <div
             class="big-num purple"
             id="sc3-num"
-            style="font-size: 40px; letter-spacing: -1px"
+            style="font-size: 30px; letter-spacing: -1px"
           >
             <span class="dc" id="c0">$</span><span class="dc" id="c1">1</span
             ><span class="dc" id="c2">5</span><span class="dc" id="c3">,</span
@@ -8182,6 +8220,24 @@
           visible = false;
           point.style.opacity = "0";
         });
+      })();
+
+      // TAP RIPPLE (mobile / touch)
+      (function () {
+        if (!window.matchMedia("(any-pointer: coarse)").matches) return;
+        document.addEventListener(
+          "touchstart",
+          (e) => {
+            const t = e.changedTouches[0];
+            const el = document.createElement("div");
+            el.className = "tap-ripple";
+            el.style.left = t.clientX + "px";
+            el.style.top = t.clientY + "px";
+            document.body.appendChild(el);
+            el.addEventListener("animationend", () => el.remove());
+          },
+          { passive: true },
+        );
       })();
 
       // SMOOTH SCROLL
